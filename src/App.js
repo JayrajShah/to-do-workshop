@@ -16,6 +16,7 @@ function App() {
   const handleAdd = () => {
     setTasks([...tasks, value]);
     setValue("");
+    console.log(...tasks);
   };
   const handleRemove = (title) => {
     setTasks(tasks.filter((task) => task !== title));
@@ -50,7 +51,9 @@ function App() {
 
   return (
     <div className="container">
-      <div className="header"></div>
+      <div className="header">
+        <h1>TO-DO APP</h1>
+      </div>
       <div className="inputControl">
         <input
           type="text"
