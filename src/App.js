@@ -1,23 +1,70 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import "./Tasks.css";
+
+// import Tasks from "./Tasks";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+  const [value, setValue] = useState("");
+  const [tasks, setTasks] = useState([]);
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    setValue(event.target.value);
+    console.log(event.target);
+  };
+  const handleAdd = () => {
+    setTasks([...tasks, value]);
+    setValue("");
+  };
+  const handleRemove = (title) => {
+    setTasks(tasks.filter((task) => task !== title));
+  };
+
+  const Tasks = ({ title, completed }) => {
+    const [isCompleted, setIscompleted] = useState(completed);
+    return (
+      <div className="task__element">
+        <div
+          className="task__info"
+          onClick={() => {
+            setIscompleted(!isCompleted);
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <div className="task__title">{title}</div>
+          <div className="task__status">
+            {isCompleted ? "Completed" : "Pending"}
+          </div>
+        </div>
+        <div
+          className="task__operation"
+          onClick={() => {
+            handleRemove(title);
+          }}
+        >
+          <div className="task__op">x</div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="container">
+      <div className="header"></div>
+      <div className="inputControl">
+        <input
+          type="text"
+          placeholder="Add Task"
+          value={value}
+          onChange={handleChange}
+        />
+        <button onClick={handleAdd}>Add</button>
+      </div>
+      <div className="list">
+        {tasks.map((task, index) => (
+          <Tasks title={task} key={index} completed={false} />
+        ))}
+      </div>
     </div>
   );
 }

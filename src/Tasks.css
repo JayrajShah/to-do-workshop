@@ -1,0 +1,48 @@
+.task__element {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem;
+  box-shadow: 2px 1px 20px 1px #d1d1d1;
+  border-radius: 15px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+.task__element:hover {
+  width: 83%;
+
+  box-shadow: 2px 1px 20px 1px #d1d1d1;
+}
+.task__info {
+  margin-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+}
+.task__operation {
+  border-radius: 0px 15px 15px 0px;
+
+  background-color: #ebebeb;
+  height: 65px;
+  width: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+.task__operation:hover {
+  background-color: #ff4d4d;
+}
+
+.task__title {
+  color: #636363;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.task__status {
+  color: #818181;
+  font-size: 14px;
+}
